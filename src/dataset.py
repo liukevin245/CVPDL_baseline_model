@@ -1,5 +1,6 @@
 from torch.utils.data import DataLoader, Dataset
 import torchvision.transforms as transforms
+from AutoAugment.autoaugment import ImageNetPolicy
 from PIL import Image
 import glob, os
 
@@ -7,6 +8,8 @@ import glob, os
 transform = {
     'train': transforms.Compose([
         transforms.Resize(224),
+        transforms.RandomHorizontalFlip(), 
+        ImageNetPolicy(),
         transforms.ToTensor(),
     ]), 
     'test': transforms.Compose([
