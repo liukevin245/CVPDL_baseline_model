@@ -4,7 +4,8 @@
 2. `cd CVPDL_baseline_model`
 3. `git clone https://github.com/DeepVoltaire/AutoAugment.git` for data augmentation
 4. Modify 2nd line in `AutoAugment/autoaugment.py` from `ops import *` to `from AutoAugment.ops import *`
-5. Follow the instructions below to prepare your data & give correct commands
+5. `pip install -r requirements.txt` to install packages in your environments
+6. Follow the instructions below to prepare your data & give correct commands
 
 ## Data Preparation
 Put all your data in the following manner
