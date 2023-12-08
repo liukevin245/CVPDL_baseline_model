@@ -31,13 +31,13 @@ def parser():
                     help='Device used to run the code')
     ap.add_argument('--log_path', type=str, default='./run_log.txt', 
                     help='Path to save running log')
+    ap.add_argument('--save_every', type=int, default=5, 
+                    help='Save interval for training')
     
     ap.add_argument('--batch_size', type=int, default=32)
     ap.add_argument('--learning_rate', type=float, default=1e-3)
     ap.add_argument('--weight_decay', type=float, default=1e-5)
     ap.add_argument('--num_epochs', type=int, default=100)
-    ap.add_argument('--save_every', type=int, default=5, 
-                    help='Save interval for training')
     
     return ap.parse_args()
 
@@ -103,8 +103,8 @@ def train(args, train_loader, test_loader):
         
         print(f"[ Valid | {epoch:03d}/{args.num_epochs:03d} ] loss = {valid_loss:.5f}, acc = {valid_acc:.5f}")
 
-        with open(args.log_path, 'a'):
-            print(f"[ Valid | {epoch:03d}/{args.num_epochs:03d} ] loss = {valid_loss:.5f}, acc = {valid_acc:.5f}")
+        with open(args.log_path, 'a') as f:
+            print(f"[ Valid | {epoch:03d}/{args.num_epochs:03d} ] loss = {valid_loss:.5f}, acc = {valid_acc:.5f}", file=f)
 
         if epoch % args.save_every == 0:
             print(f"Checkpoint saved at epoch #{epoch}")
