@@ -1,5 +1,7 @@
 **/__pycache__
 *.txt
+!requirements.txt
 *.png
 *.jpg
 *.ckpt
+AutoAugment
